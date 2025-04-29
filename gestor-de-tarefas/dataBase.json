@@ -1,11 +1,18 @@
 {
-    "tasks": [
-      {
-        "id": 1,
-        "title": "Estudar React",
-        "description": "Revisão de hooks",
-        "priority": "alta",
-        "done": false
-      }
-    ]
-  }
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Estudar React",
+      "description": "Revisão de hooks",
+      "priority": "alta",
+      "done": false
+    },
+    {
+      "id": "b3b7",
+      "title": "Teste",
+      "description": "Nova Tarefa Teste",
+      "priority": "média",
+      "done": false
+    }
+  ]
+}
