@@ -73,6 +73,20 @@ label {
   background-color: #f9f9f9;
 }
 
+.task-card.done {
+  text-decoration: line-through;
+  color: #777;
+  background-color: #eee;
+}
+
+.actions {
+  margin-top: 0.5rem;
+}
+
+.actions button {
+  margin-right: 0.5rem;
+}
+
 .task-card h3 {
   margin-bottom: 0.5rem;
 }
@@ -81,6 +95,11 @@ label {
   margin-top: 1rem;
   display: flex;
   gap: 0.5rem;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
 }
 
 @media (prefers-color-scheme: light) {

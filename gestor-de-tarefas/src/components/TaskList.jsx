@@ -1,58 +1,79 @@
 import { useEffect, useState } from 'react';
-import api from '../services/api';
 import { Link } from 'react-router-dom';
+import api from '../services/api';
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    api.get('/tasks')
-      .then(res => setTasks(res.data))
-      .catch(err => console.error('Erro ao obter tarefas:', err));
+    fetchTasks();
   }, []);
 
-  const toggleDone = async (task) => {
+  const fetchTasks = async () => {
     try {
-      await api.patch(`/tasks/${task.id}`, { done: !task.done });
-      setTasks(tasks.map(t => t.id === task.id ? { ...t, done: !t.done } : t));
+      const res = await api.get('/tasks');
+      setTasks(res.data);
     } catch (err) {
-      console.error('Erro ao actualizar tarefa:', err);
+      console.error('Erro ao obter tarefas:', err);
     }
   };
 
-  const deleteTask = async (id) => {
-    if (!confirm('Tem a certeza que quer eliminar esta tarefa?')) return;
+  const handleDelete = async (id) => {
+    const confirm = window.confirm('Tens a certeza que queres eliminar esta tarefa?');
+    if (!confirm) return;
+
     try {
       await api.delete(`/tasks/${id}`);
-      setTasks(tasks.filter(t => t.id !== id));
+      setTasks(tasks.filter(task => task.id !== id));
     } catch (err) {
       console.error('Erro ao eliminar tarefa:', err);
     }
   };
 
+  const toggleDone = async (id, currentStatus) => {
+    try {
+      await api.patch(`/tasks/${id}`, { done: !currentStatus });
+      setTasks(tasks.map(task =>
+        task.id === id ? { ...task, done: !currentStatus } : task
+      ));
+    } catch (err) {
+      console.error('Erro ao atualizar estado da tarefa:', err);
+    }
+  };
+
   return (
     <div>
-      {tasks.map(task => (
-        <div className="task-card" key={task.id}>
-        <h3>{task.title}</h3>
-        <p>{task.description}</p>
-        <p><strong>Prioridade:</strong> {task.priority}</p>
-        <p>
-          <label>
-            <input
-              type="checkbox"
-              checked={task.done}
-              onChange={() => toggleDone(task.id, task.done)}
-            />{' '}
-            Concluída
-          </label>
-        </p>
-        <div className="task-actions">
-          <Link to={`/editar/${task.id}`}><button>Editar</button></Link>
-          <button onClick={() => handleDelete(task.id)}>Eliminar</button>
-        </div>
-      </div>
-      ))}
+      <h2>Lista de Tarefas</h2>
+      <Link to="/nova">
+        <button>➕ Nova Tarefa</button>
+      </Link>
+
+      {tasks.length === 0 ? (
+        <p>Sem tarefas no momento.</p>
+      ) : (
+        tasks.map(task => (
+          <div className={`task-card ${task.done ? 'done' : ''}`} key={task.id}>
+            <h3>{task.title}</h3>
+            {task.description && <p>{task.description}</p>}
+            <p><strong>Prioridade:</strong> {task.priority || 'não definida'}</p>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={task.done}
+                onChange={() => toggleDone(task.id, task.done)}
+              /> Concluída
+            </label>
+
+            <div className="actions">
+              <Link to={`/editar/${task.id}`}>
+                <button>✏️ Editar</button>
+              </Link>
+              <button onClick={() => handleDelete(task.id)}>🗑️ Eliminar</button>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
