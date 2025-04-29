@@ -1,0 +1,11 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Estudar React",
+        "description": "Revisão de hooks",
+        "priority": "alta",
+        "done": false
+      }
+    ]
+  }
