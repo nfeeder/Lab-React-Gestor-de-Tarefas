@@ -1,13 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import NewTask from './pages/NewTask';
+import EditTask from './pages/EditTask';
 
 function App() {
   return (
-    <div>
-      <h1>Gestor de Tarefas</h1>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nova" element={<NewTask />} />
+        <Route path="/editar/:id" element={<EditTask />} />
+      </Routes>
+    </>
   );
 }
 
