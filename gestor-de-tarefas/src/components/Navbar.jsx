@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 function Navbar() {
   return (
-    <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-      <Link to="/">Início</Link> | <Link to="/nova">Nova Tarefa</Link>
+    <nav className="navbar">
+      <h1>Gestor de Tarefas</h1>
+      <div className="links">
+        <Link to="/">Tarefas</Link>
+        <Link to="/nova">Nova Tarefa</Link>
+      </div>
     </nav>
   );
 }

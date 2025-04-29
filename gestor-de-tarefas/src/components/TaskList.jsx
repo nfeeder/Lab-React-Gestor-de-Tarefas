@@ -33,16 +33,25 @@ function TaskList() {
   return (
     <div>
       {tasks.map(task => (
-        <div key={task.id} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem' }}>
-          <h3 style={{ textDecoration: task.done ? 'line-through' : 'none' }}>{task.title}</h3>
-          <p>{task.description}</p>
-          <p><strong>Prioridade:</strong> {task.priority}</p>
-          <button onClick={() => toggleDone(task)}>
-            {task.done ? 'Desmarcar' : 'Concluir'}
-          </button>{' '}
-          <Link to={`/editar/${task.id}`}>Editar</Link>{' '}
-          <button onClick={() => deleteTask(task.id)}>Eliminar</button>
+        <div className="task-card" key={task.id}>
+        <h3>{task.title}</h3>
+        <p>{task.description}</p>
+        <p><strong>Prioridade:</strong> {task.priority}</p>
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              checked={task.done}
+              onChange={() => toggleDone(task.id, task.done)}
+            />{' '}
+            Concluída
+          </label>
+        </p>
+        <div className="task-actions">
+          <Link to={`/editar/${task.id}`}><button>Editar</button></Link>
+          <button onClick={() => handleDelete(task.id)}>Eliminar</button>
         </div>
+      </div>
       ))}
     </div>
   );
