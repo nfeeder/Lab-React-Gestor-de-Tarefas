@@ -9,9 +9,9 @@
     },
     {
       "id": "b3b7",
-      "title": "Teste",
-      "description": "Nova Tarefa Teste",
-      "priority": "média",
+      "title": "TesteEdit",
+      "description": "Nova Tarefa Teste Edit",
+      "priority": "alta",
       "done": false
     }
   ]
