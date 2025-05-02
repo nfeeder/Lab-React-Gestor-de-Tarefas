@@ -18,7 +18,7 @@ Aplicação desenvolvida com React que permite criar, listar, editar, eliminar e
 ### 1. Clonar o repositório
 
 
-git clone https://github.com/o-teu-utilizador/gestor-tarefas-react.git
+git clone https://github.com/nfeeder/Lab-React-Gestor-de-Tarefas.git
 cd gestor-tarefas-react
 
 ### 2. Instalar dependencias
