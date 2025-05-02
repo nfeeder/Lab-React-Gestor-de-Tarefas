@@ -1,12 +1,57 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📝 Gestor de Tarefas (React)
 
-Currently, two official plugins are available:
+Aplicação desenvolvida com React que permite criar, listar, editar, eliminar e marcar tarefas como concluídas. Inclui integração com uma API REST local (`json-server`). 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- 📋 Listagem de tarefas
+- ➕ Criação de novas tarefas
+- ✏️ Edição de tarefas existentes
+- 🗑️ Eliminação de tarefas (com confirmação)
+- ✅ Marcar tarefas como concluídas
+- 🔄 API simulada com `json-server`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## ⚙️ Instalação e Arranque
+
+### 1. Clonar o repositório
+
+
+git clone https://github.com/o-teu-utilizador/gestor-tarefas-react.git
+cd gestor-tarefas-react
+
+### 2. Instalar dependencias
+
+npm install
+
+### 3. Iniciar o json-server (API local)
+
+npx json-server --watch dataBase.json --port 3001
+
+### 4. Iniciar o json-server (API local)
+
+npm run dev
+
+### Estrutura Inicial da dataBase.json
+
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Estudar React",
+      "description": "Revisar hooks principais",
+      "priority": "alta",
+      "done": false
+    }
+  ]
+}
+
+### Tecnologias Usadas
+
+React
+React Router DOM
+Axios
+json-server
+Vite
+CSS Modules
