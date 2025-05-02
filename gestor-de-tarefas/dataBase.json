@@ -4,7 +4,7 @@
       "id": "1",
       "title": "Estudar React",
       "description": "Revisão de hooks",
-      "priority": "alta",
+      "priority": "baixa",
       "done": false
     },
     {
@@ -12,6 +12,13 @@
       "title": "Teste",
       "description": "tete",
       "priority": "média",
+      "done": false
+    },
+    {
+      "id": "ac76",
+      "title": "Teste2",
+      "description": "Teste2",
+      "priority": "alta",
       "done": false
     }
   ]

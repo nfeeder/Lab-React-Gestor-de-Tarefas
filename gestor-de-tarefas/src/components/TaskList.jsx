@@ -43,10 +43,6 @@ function TaskList() {
 
   return (
     <div>
-      <h2>Lista de Tarefas</h2>
-      <Link to="/nova">
-        <button>➕ Nova Tarefa</button>
-      </Link>
 
       {tasks.length === 0 ? (
         <p>Sem tarefas no momento.</p>
@@ -55,22 +51,23 @@ function TaskList() {
           <div className={`task-card ${task.done ? 'done' : ''}`} key={task.id}>
             <h3>{task.title}</h3>
             {task.description && <p>{task.description}</p>}
-            <p><strong>Prioridade:</strong> {task.priority || 'não definida'}</p>
+            <p><strong>Prioridade:</strong> {task.priority}</p>
 
             <label>
               <input
                 type="checkbox"
                 checked={task.done}
                 onChange={() => toggleDone(task.id, task.done)}
-              /> Concluída
+              /> Concluir
             </label>
-
+            {!task.done && (
             <div className="actions">
               <Link to={`/editar/${task.id}`}>
                 <button>✏️ Editar</button>
               </Link>
               <button onClick={() => handleDelete(task.id)}>🗑️ Eliminar</button>
             </div>
+          )}         
           </div>
         ))
       )}

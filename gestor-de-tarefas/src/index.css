@@ -27,7 +27,6 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -43,14 +42,13 @@ form {
 }
 
 input, textarea, select {
-  width: 300px;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
 button {
   padding: 0.5rem 1rem;
-  background-color: #3b82f6;
+  background-color: #a4a3a3;
   color: black;
   border: none;
   cursor: pointer;
@@ -58,7 +56,7 @@ button {
 }
 
 button:hover {
-  background-color: #2563eb;
+  background-color: #5e5f62;
 }
 
 label {
